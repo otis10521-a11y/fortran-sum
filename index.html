@@ -85,7 +85,7 @@ $ echo 10 | ./sum_to_n
 高斯公式 N(N+1)/2 驗證     = 55
 兩種方法結果一致 ✓</pre>
   <details>
-    <summary>查看原版程式碼（第一版 commit bb007eb）</summary>
+    <summary>查看原版程式碼（原版 commit 258e85b）</summary>
 <pre>! sum_to_n.f90 — 計算 1 + 2 + ... + N
 program sum_to_n
     implicit none
@@ -127,15 +127,15 @@ end program sum_to_n</pre>
   <div class="label">題目</div>
   <p class="q">指揮 AI 執行該程式進行三次隨機的驗證，以確定該程式功能的正確性。（20 分）</p>
   <div class="label">我的指令</div>
-  <p class="instr">幫我生成那個網頁（AI 在製作網頁前，先依作業要求補做本題）</p>
+  <p class="instr">用隨機產生的三個 N 執行這個 Fortran 程式，並用公式 N(N+1)/2 另外獨立計算，驗證三次結果是否正確。</p>
   <div class="label">AI 的處理過程</div>
   <p>AI 用 <code>shuf</code> 在 1～1,000,000 之間隨機產生三個 N，送進 Fortran 程式執行，再用 Python 以 N(N+1)/2 <b>獨立計算</b>正確答案（不依賴 Fortran 程式本身的驗證），逐一比對。</p>
   <div class="label">驗證結果</div>
   <table>
     <tr><th>次數</th><th>隨機 N</th><th>Fortran 程式輸出</th><th>Python 獨立計算</th><th>判定</th></tr>
-    <tr><td>第 1 次</td><td class="num">364241</td><td class="num">66335935161</td><td class="num">66335935161</td><td>正確 ✓</td></tr>
-    <tr><td>第 2 次</td><td class="num">378761</td><td class="num">71730136941</td><td class="num">71730136941</td><td>正確 ✓</td></tr>
-    <tr><td>第 3 次</td><td class="num">815806</td><td class="num">332770122721</td><td class="num">332770122721</td><td>正確 ✓</td></tr>
+    <tr><td>第 1 次</td><td class="num">684798</td><td class="num">234474492801</td><td class="num">234474492801</td><td>正確 ✓</td></tr>
+    <tr><td>第 2 次</td><td class="num">507901</td><td class="num">128981966851</td><td class="num">128981966851</td><td>正確 ✓</td></tr>
+    <tr><td>第 3 次</td><td class="num">54008</td><td class="num">1458459036</td><td class="num">1458459036</td><td>正確 ✓</td></tr>
   </table>
 </section>
 
@@ -145,11 +145,11 @@ end program sum_to_n</pre>
   <div class="label">題目</div>
   <p class="q">針對所開發的程式進行 Git 版本控制，將原版認錄（commit），之後指揮 AI 針對原程式碼進行逐行註解並編譯驗證成功後，再次認錄為新版。（20 分）</p>
   <div class="label">我的指令</div>
-  <p class="instr">幫我生成那個網頁（AI 在製作網頁前，先依作業要求補做本題）</p>
+  <p class="instr">建立 Git repository，把原版程式 commit。接著幫原程式碼加上逐行註解，重新編譯並執行驗證成功後，再 commit 成新版，最後給我看 git log。</p>
   <div class="label">AI 的處理過程</div>
-<pre>$ git init -b main
-$ git add sum_to_n.f90 .gitignore
-$ git commit -m "原版：1 加到 N 的 Fortran 程式"
+<pre>$ cp 原版程式 sum_to_n.f90
+$ git add sum_to_n.f90
+$ git commit -m "原版：1 加到 N 的 Fortran 程式（依指令重新認錄）"
 （AI 為每一行程式碼加上中文註解）
 $ gfortran -Wall -o sum_to_n sum_to_n.f90
 編譯成功
@@ -159,10 +159,14 @@ $ echo 100 | ./sum_to_n
 兩種方法結果一致 ✓
 $ git commit -am "新版：加上逐行註解（已重新編譯驗證）"
 $ git log --oneline
+1445edb 新版：加上逐行註解（已重新編譯驗證）
+258e85b 原版：1 加到 N 的 Fortran 程式（依指令重新認錄）
+35ad6e2 加入作業網頁（含評分系統）
 092babb 新版：加上逐行註解（已重新編譯驗證）
 bb007eb 原版：1 加到 N 的 Fortran 程式</pre>
+  <p class="q">說明：repository 在先前已建立並推送到 GitHub，因此本次依指令在原有紀錄之上重新認錄原版（258e85b）與註解新版（1445edb），未改寫既有歷史。</p>
   <details open>
-    <summary>查看新版程式碼（逐行註解，第二版 commit 092babb）</summary>
+    <summary>查看新版程式碼（逐行註解，新版 commit 1445edb）</summary>
 <pre>! sum_to_n.f90 — 計算 1 + 2 + ... + N
 ! （本行為檔案說明註解：程式名稱與用途）
 program sum_to_n                                 ! 宣告主程式開始，程式名稱為 sum_to_n
@@ -222,7 +226,7 @@ branch 'main' set up to track 'origin/main'.</pre>
   <div class="label">題目</div>
   <p class="q">要求 AI 做一個任務達成評分系統，允許輸入前四題的結果，達標就給分。（20 分）</p>
   <div class="label">我的指令</div>
-  <p class="instr">幫我生成那個網頁（評分系統內建於本網頁）</p>
+  <p class="instr">做一個任務達成評分系統，可以輸入前四題的結果，每題達標就給 20 分，最後顯示總分，並整合進作業網頁。</p>
   <div class="label">評分規則</div>
   <p class="q">第一題：輸入的 N 與程式輸出符合 N(N+1)/2，且已勾選「編譯成功」。第二題：三組 N 與輸出全部正確。第三題：<code>git log</code> 至少有兩筆 commit。第四題：填入有效的 GitHub repository 網址。第五題：前四題的輸入都能自動判分，本系統運作即得分。每題 20 分。</p>
   <div class="label">輸入前四題的結果（已預先填入本次實際結果，可修改測試）</div>
@@ -242,17 +246,17 @@ branch 'main' set up to track 'origin/main'.</pre>
     <label>第二題：三次隨機驗證</label>
     <div class="grid3">
       <span>N</span><span>程式輸出</span>
-      <input type="number" class="q2n" value="364241"><input type="text" class="q2o" value="66335935161">
-      <input type="number" class="q2n" value="378761"><input type="text" class="q2o" value="71730136941">
-      <input type="number" class="q2n" value="815806"><input type="text" class="q2o" value="332770122721">
+      <input type="number" class="q2n" value="684798"><input type="text" class="q2o" value="234474492801">
+      <input type="number" class="q2n" value="507901"><input type="text" class="q2o" value="128981966851">
+      <input type="number" class="q2n" value="54008"><input type="text" class="q2o" value="1458459036">
     </div>
     <div class="fb" id="fb2"></div>
   </div>
 
   <div class="row">
     <label>第三題：貼上 <code>git log --oneline</code> 的輸出</label>
-    <textarea id="q3log">092babb 新版：加上逐行註解（已重新編譯驗證）
-bb007eb 原版：1 加到 N 的 Fortran 程式</textarea>
+    <textarea id="q3log">1445edb 新版：加上逐行註解（已重新編譯驗證）
+258e85b 原版：1 加到 N 的 Fortran 程式（依指令重新認錄）</textarea>
     <div class="fb" id="fb3"></div>
   </div>
 
