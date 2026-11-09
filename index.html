@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>胡祐禎、410560899、100分</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --card: #ffffff; --ink: #1f2328; --muted: #5d6470;
+    --line: #e2e0d8; --accent: #2f5d8a; --ok: #1f7a4d; --okbg: #e6f4ec;
+    --warn: #9a5b00; --warnbg: #fdf1dc; --code: #f3f2ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 28px; }
+  header h1 { margin: 0; font-size: 1.9rem; letter-spacing: .02em; }
+  header p { margin: 6px 0 0; color: var(--muted); }
+  .score-strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .chip { font-size: .85rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+  .chip.ok { background: var(--okbg); border-color: #b9dfc9; color: var(--ok); }
+  .chip.no { background: var(--warnbg); border-color: #f0d49f; color: var(--warn); }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; margin-bottom: 20px; }
+  section h2 { margin: 0 0 4px; font-size: 1.2rem; display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .pts { font-size: .9rem; font-weight: 600; white-space: nowrap; }
+  .pts.ok { color: var(--ok); } .pts.no { color: var(--warn); }
+  .label { font-size: .78rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; margin: 16px 0 4px; }
+  .q { margin: 0; color: var(--muted); }
+  .instr { background: #eef3f8; border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 0 6px 6px 0; margin: 0; }
+  pre {
+    background: var(--code); border: 1px solid var(--line); border-radius: 6px;
+    padding: 12px 14px; overflow-x: auto; font-size: .82rem; line-height: 1.55; margin: 0;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+  th { background: var(--code); }
+  td.num { font-family: ui-monospace, Menlo, Consolas, monospace; text-align: right; }
+  details summary { cursor: pointer; color: var(--accent); margin-top: 12px; }
+  /* 評分系統 */
+  .grader .row { margin-bottom: 14px; }
+  .grader label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 4px; }
+  .grader input[type=text], .grader input[type=number], .grader textarea {
+    width: 100%; padding: 7px 10px; border: 1px solid #c9c6bb; border-radius: 6px;
+    font: inherit; font-size: .9rem; background: #fff;
+  }
+  .grader textarea { font-family: ui-monospace, Menlo, Consolas, monospace; min-height: 64px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+  .grid3 span { font-size: .8rem; color: var(--muted); }
+  .fb { font-size: .85rem; margin-top: 4px; }
+  .fb.ok { color: var(--ok); } .fb.no { color: var(--warn); }
+  .total { font-size: 1.4rem; font-weight: 700; text-align: right; border-top: 1px solid var(--line); padding-top: 12px; }
+  button { font: inherit; padding: 7px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  button.ghost { background: #fff; color: var(--accent); }
+  footer { color: var(--muted); font-size: .82rem; text-align: center; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1 id="pageTitle">胡祐禎、410560899、100分</h1>
+  <p>作業：指揮 AI 完成 Fortran「1 加到 N」程式開發、驗證、版本控制與評分　｜　AI：Claude　｜　2026-11-09</p>
+  <div class="score-strip" id="chips"></div>
+</header>
+
+<!-- 第一題 -->
+<section>
+  <h2>一、撰寫並編譯 1 加到 N 的 Fortran 程式 <span class="pts" data-q="1"></span></h2>
+  <div class="label">題目</div>
+  <p class="q">指揮 AI 輸出一個能做 1 加到 N 的 Fortran 程式並完成編譯，確認可以成功執行計算並輸出結果。（20 分）</p>
+  <div class="label">我的指令</div>
+  <p class="instr">輸出一個能做 1 加到 N 的 Fortran 程式並完成編譯，確認可以成功執行計算並輸出結果</p>
+  <div class="label">AI 的處理過程</div>
+  <p>AI 撰寫 <code>sum_to_n.f90</code>：讀入正整數 N，用 <code>do</code> 迴圈累加，再以高斯公式 N(N+1)/2 交叉驗證；變數使用 64 位元整數避免大數溢位，並檢查不合法輸入。一開始的環境沒有 Fortran 編譯器，開啟網路權限後，AI 安裝 GNU Fortran 13.3.0 完成編譯。</p>
+  <div class="label">編譯與執行結果</div>
+<pre>$ gfortran -Wall -o sum_to_n sum_to_n.f90
+編譯成功
+$ echo 10 | ./sum_to_n
+請輸入正整數 N: 1 加到 10 的總和 (迴圈) = 55
+高斯公式 N(N+1)/2 驗證     = 55
+兩種方法結果一致 ✓</pre>
+  <details>
+    <summary>查看原版程式碼（第一版 commit bb007eb）</summary>
+<pre>! sum_to_n.f90 — 計算 1 + 2 + ... + N
+program sum_to_n
+    implicit none
+    integer(kind=8) :: n, i, total, formula
+    integer :: ios
+
+    write(*, '(A)', advance='no') '請輸入正整數 N: '
+    read(*, *, iostat=ios) n
+
+    if (ios /= 0 .or. n &lt; 1) then
+        write(*, '(A)') '錯誤：請輸入一個正整數。'
+        stop 1
+    end if
+
+    ! 方法一：用迴圈逐項相加
+    total = 0
+    do i = 1, n
+        total = total + i
+    end do
+
+    ! 方法二：用高斯公式 N(N+1)/2 驗證
+    formula = n * (n + 1) / 2
+
+    write(*, '(A, I0, A, I0)') '1 加到 ', n, ' 的總和 (迴圈) = ', total
+    write(*, '(A, I0)')        '高斯公式 N(N+1)/2 驗證     = ', formula
+
+    if (total == formula) then
+        write(*, '(A)') '兩種方法結果一致 ✓'
+    else
+        write(*, '(A)') '結果不一致！'
+    end if
+end program sum_to_n</pre>
+  </details>
+</section>
+
+<!-- 第二題 -->
+<section>
+  <h2>二、三次隨機驗證 <span class="pts" data-q="2"></span></h2>
+  <div class="label">題目</div>
+  <p class="q">指揮 AI 執行該程式進行三次隨機的驗證，以確定該程式功能的正確性。（20 分）</p>
+  <div class="label">我的指令</div>
+  <p class="instr">幫我生成那個網頁（AI 在製作網頁前，先依作業要求補做本題）</p>
+  <div class="label">AI 的處理過程</div>
+  <p>AI 用 <code>shuf</code> 在 1～1,000,000 之間隨機產生三個 N，送進 Fortran 程式執行，再用 Python 以 N(N+1)/2 <b>獨立計算</b>正確答案（不依賴 Fortran 程式本身的驗證），逐一比對。</p>
+  <div class="label">驗證結果</div>
+  <table>
+    <tr><th>次數</th><th>隨機 N</th><th>Fortran 程式輸出</th><th>Python 獨立計算</th><th>判定</th></tr>
+    <tr><td>第 1 次</td><td class="num">364241</td><td class="num">66335935161</td><td class="num">66335935161</td><td>正確 ✓</td></tr>
+    <tr><td>第 2 次</td><td class="num">378761</td><td class="num">71730136941</td><td class="num">71730136941</td><td>正確 ✓</td></tr>
+    <tr><td>第 3 次</td><td class="num">815806</td><td class="num">332770122721</td><td class="num">332770122721</td><td>正確 ✓</td></tr>
+  </table>
+</section>
+
+<!-- 第三題 -->
+<section>
+  <h2>三、Git 版本控制與逐行註解 <span class="pts" data-q="3"></span></h2>
+  <div class="label">題目</div>
+  <p class="q">針對所開發的程式進行 Git 版本控制，將原版認錄（commit），之後指揮 AI 針對原程式碼進行逐行註解並編譯驗證成功後，再次認錄為新版。（20 分）</p>
+  <div class="label">我的指令</div>
+  <p class="instr">幫我生成那個網頁（AI 在製作網頁前，先依作業要求補做本題）</p>
+  <div class="label">AI 的處理過程</div>
+<pre>$ git init -b main
+$ git add sum_to_n.f90 .gitignore
+$ git commit -m "原版：1 加到 N 的 Fortran 程式"
+（AI 為每一行程式碼加上中文註解）
+$ gfortran -Wall -o sum_to_n sum_to_n.f90
+編譯成功
+$ echo 100 | ./sum_to_n
+請輸入正整數 N: 1 加到 100 的總和 (迴圈) = 5050
+高斯公式 N(N+1)/2 驗證     = 5050
+兩種方法結果一致 ✓
+$ git commit -am "新版：加上逐行註解（已重新編譯驗證）"
+$ git log --oneline
+092babb 新版：加上逐行註解（已重新編譯驗證）
+bb007eb 原版：1 加到 N 的 Fortran 程式</pre>
+  <details open>
+    <summary>查看新版程式碼（逐行註解，第二版 commit 092babb）</summary>
+<pre>! sum_to_n.f90 — 計算 1 + 2 + ... + N
+! （本行為檔案說明註解：程式名稱與用途）
+program sum_to_n                                 ! 宣告主程式開始，程式名稱為 sum_to_n
+    implicit none                                ! 關閉隱式型別宣告，所有變數都必須明確宣告
+    integer(kind=8) :: n, i, total, formula      ! 宣告 64 位元整數：n=上限、i=迴圈計數、total=迴圈總和、formula=公式結果
+    integer :: ios                               ! 宣告整數 ios，用來接收讀取輸入時的狀態碼（0 代表成功）
+
+    write(*, '(A)', advance='no') '請輸入正整數 N: '   ! 在螢幕印出提示文字，advance='no' 讓游標停在同一行
+    read(*, *, iostat=ios) n                     ! 從鍵盤讀入 n，讀取狀態存入 ios（輸入非數字時 ios 不為 0）
+
+    if (ios /= 0 .or. n &lt; 1) then                ! 若讀取失敗或 n 小於 1，視為不合法輸入
+        write(*, '(A)') '錯誤：請輸入一個正整數。'   ! 印出錯誤訊息
+        stop 1                                   ! 以錯誤碼 1 結束程式
+    end if                                       ! 結束 if 判斷
+
+    ! 方法一：用迴圈逐項相加
+    total = 0                                    ! 總和變數歸零，作為累加的起點
+    do i = 1, n                                  ! 迴圈開始：i 從 1 依序跑到 n
+        total = total + i                        ! 每一圈把目前的 i 加進 total
+    end do                                       ! 迴圈結束
+
+    ! 方法二：用高斯公式 N(N+1)/2 驗證
+    formula = n * (n + 1) / 2                    ! 先算 n*(n+1)（必為偶數），再除以 2，得到公式解
+
+    write(*, '(A, I0, A, I0)') '1 加到 ', n, ' 的總和 (迴圈) = ', total   ! 印出迴圈結果；I0 表示整數用最短寬度輸出
+    write(*, '(A, I0)')        '高斯公式 N(N+1)/2 驗證     = ', formula  ! 印出公式結果
+
+    if (total == formula) then                   ! 比較兩種方法的結果是否相等
+        write(*, '(A)') '兩種方法結果一致 ✓'       ! 相等時印出一致訊息
+    else                                         ! 否則（結果不相等）
+        write(*, '(A)') '結果不一致！'             ! 印出不一致警告
+    end if                                       ! 結束 if 判斷
+end program sum_to_n                             ! 主程式結束</pre>
+  </details>
+</section>
+
+<!-- 第四題 -->
+<section>
+  <h2>四、上傳到 GitHub <span class="pts" data-q="4"></span></h2>
+  <div class="label">題目</div>
+  <p class="q">將本地端已經進行版本控制的程式碼，傳送到 Github 做雲端儲存。（20 分）</p>
+  <div class="label">我的指令</div>
+  <p class="instr">https://github.com/otis10521-a11y/fortran-sum<br>（安裝 Claude GitHub App 授權後）好了，推送上去</p>
+  <div class="label">AI 的處理過程</div>
+  <p>我先在 GitHub 建立空的 public repository，並安裝 Claude GitHub App 授權推送。AI 把本地 repository 設定遠端 <code>origin</code> 後推送，原版與新版兩筆 commit 都完整上傳，最後再加入本網頁並啟用 GitHub Pages。</p>
+<pre>$ git remote add origin https://github.com/otis10521-a11y/fortran-sum
+$ git push -u origin main
+To https://github.com/otis10521-a11y/fortran-sum
+ * [new branch]      main -&gt; main
+branch 'main' set up to track 'origin/main'.</pre>
+  <p>雲端 repository：<a href="https://github.com/otis10521-a11y/fortran-sum">https://github.com/otis10521-a11y/fortran-sum</a></p>
+</section>
+
+<!-- 第五題：評分系統 -->
+<section class="grader">
+  <h2>五、任務達成評分系統 <span class="pts" data-q="5"></span></h2>
+  <div class="label">題目</div>
+  <p class="q">要求 AI 做一個任務達成評分系統，允許輸入前四題的結果，達標就給分。（20 分）</p>
+  <div class="label">我的指令</div>
+  <p class="instr">幫我生成那個網頁（評分系統內建於本網頁）</p>
+  <div class="label">評分規則</div>
+  <p class="q">第一題：輸入的 N 與程式輸出符合 N(N+1)/2，且已勾選「編譯成功」。第二題：三組 N 與輸出全部正確。第三題：<code>git log</code> 至少有兩筆 commit。第四題：填入有效的 GitHub repository 網址。第五題：前四題的輸入都能自動判分，本系統運作即得分。每題 20 分。</p>
+  <div class="label">輸入前四題的結果（已預先填入本次實際結果，可修改測試）</div>
+
+  <div class="row">
+    <label>第一題：編譯與執行</label>
+    <div><input type="checkbox" id="q1compiled" checked> <span>gfortran 編譯成功</span></div>
+    <div class="grid3" style="margin-top:6px">
+      <span>輸入的 N</span><span>程式輸出的總和</span>
+      <input type="number" id="q1n" value="10">
+      <input type="text" id="q1out" value="55">
+    </div>
+    <div class="fb" id="fb1"></div>
+  </div>
+
+  <div class="row">
+    <label>第二題：三次隨機驗證</label>
+    <div class="grid3">
+      <span>N</span><span>程式輸出</span>
+      <input type="number" class="q2n" value="364241"><input type="text" class="q2o" value="66335935161">
+      <input type="number" class="q2n" value="378761"><input type="text" class="q2o" value="71730136941">
+      <input type="number" class="q2n" value="815806"><input type="text" class="q2o" value="332770122721">
+    </div>
+    <div class="fb" id="fb2"></div>
+  </div>
+
+  <div class="row">
+    <label>第三題：貼上 <code>git log --oneline</code> 的輸出</label>
+    <textarea id="q3log">092babb 新版：加上逐行註解（已重新編譯驗證）
+bb007eb 原版：1 加到 N 的 Fortran 程式</textarea>
+    <div class="fb" id="fb3"></div>
+  </div>
+
+  <div class="row">
+    <label>第四題：GitHub repository 網址</label>
+    <input type="text" id="q4url" placeholder="https://github.com/帳號/fortran-sum" value="https://github.com/otis10521-a11y/fortran-sum">
+    <div class="fb" id="fb4"></div>
+  </div>
+
+  <div class="row">
+    <label>第五題：評分系統本身</label>
+    <div class="fb" id="fb5"></div>
+  </div>
+
+  <div style="display:flex; gap:8px; justify-content:flex-end; margin-bottom:12px">
+    <button class="ghost" id="resetBtn" type="button">清空重填</button>
+    <button id="gradeBtn" type="button">重新評分</button>
+  </div>
+  <div class="total" id="total"></div>
+</section>
+
+<footer>本頁由 Claude 依作業要求產生。程式與 Git 紀錄於 2026-11-09 實際執行。</footer>
+</div>
+
+<script>
+(function () {
+  const NAME = '胡祐禎', ID = '410560899';
+  const $ = (id) => document.getElementById(id);
+
+  // 用 BigInt 計算 N(N+1)/2，避免大數失準
+  function gauss(n) { const b = BigInt(n); return (b * (b + 1n)) / 2n; }
+  function isPosInt(v) { return /^\s*[1-9]\d*\s*$/.test(String(v)); }
+  function matches(nStr, outStr) {
+    if (!isPosInt(nStr) || !/^\s*\d+\s*$/.test(String(outStr))) return false;
+    return gauss(nStr.trim()) === BigInt(outStr.trim());
+  }
+
+  function grade() {
+    const res = {};
+
+    // 第一題
+    const n1 = $('q1n').value, o1 = $('q1out').value;
+    const ok1 = $('q1compiled').checked && matches(n1, o1);
+    res[1] = { ok: ok1, msg: ok1 ? '達標：編譯成功且輸出正確'
+      : (!$('q1compiled').checked ? '未達標：未勾選編譯成功'
+      : (isPosInt(n1) ? '未達標：正確答案應為 ' + gauss(n1.trim()) : '未達標：請輸入正整數 N')) };
+
+    // 第二題
+    const ns = [...document.querySelectorAll('.q2n')].map(e => e.value);
+    const os = [...document.querySelectorAll('.q2o')].map(e => e.value);
+    const each = ns.map((n, i) => matches(n, os[i]));
+    const ok2 = each.length === 3 && each.every(Boolean);
+    res[2] = { ok: ok2, msg: ok2 ? '達標：三次驗證全部正確'
+      : '未達標：' + each.map((b, i) => '第' + (i + 1) + '次' + (b ? '✓' : '✗')).join('　') };
+
+    // 第三題
+    const lines = $('q3log').value.split('\n').map(s => s.trim())
+      .filter(s => /^[0-9a-f]{7,40}\s+\S/.test(s));
+    const ok3 = lines.length >= 2;
+    res[3] = { ok: ok3, msg: ok3 ? '達標：偵測到 ' + lines.length + ' 筆 commit（原版＋新版）'
+      : '未達標：需要至少 2 筆 commit，目前偵測到 ' + lines.length + ' 筆' };
+
+    // 第四題
+    const url = $('q4url').value.trim();
+    const ok4 = /^https?:\/\/(www\.)?github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9._-]+\/?(\.git)?$/.test(url);
+    res[4] = { ok: ok4, msg: ok4 ? '達標：' + url
+      : (url ? '未達標：網址格式應為 https://github.com/帳號/repository' : '未達標：尚未填入 GitHub 網址') };
+
+    // 第五題：評分系統能對前四題自動判分即達標
+    res[5] = { ok: true, msg: '達標：評分系統已對前四題自動判分' };
+
+    let total = 0;
+    for (let q = 1; q <= 5; q++) {
+      const r = res[q], pts = r.ok ? 20 : 0; total += pts;
+      const fb = $('fb' + q); fb.textContent = r.msg; fb.className = 'fb ' + (r.ok ? 'ok' : 'no');
+      document.querySelectorAll('.pts[data-q="' + q + '"]').forEach(el => {
+        el.textContent = pts + ' / 20 分'; el.className = 'pts ' + (r.ok ? 'ok' : 'no');
+      });
+    }
+    $('chips').innerHTML = [1, 2, 3, 4, 5].map(q =>
+      '<span class="chip ' + (res[q].ok ? 'ok' : 'no') + '">第' + '一二三四五'[q - 1] + '題 ' + (res[q].ok ? 20 : 0) + '</span>').join('');
+    $('total').textContent = '總分：' + total + ' / 100';
+    const t = NAME + '、' + ID + '、' + total + '分';
+    $('pageTitle').textContent = t; document.title = t;
+  }
+
+  $('gradeBtn').addEventListener('click', grade);
+  $('resetBtn').addEventListener('click', () => {
+    document.querySelectorAll('.grader input[type=text], .grader input[type=number], .grader textarea').forEach(e => e.value = '');
+    $('q1compiled').checked = false; grade();
+  });
+  document.querySelectorAll('.grader input, .grader textarea').forEach(e => e.addEventListener('input', grade));
+  grade();
+})();
+</script>
+</body>
+</html>
